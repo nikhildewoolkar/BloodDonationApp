@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pharma </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="{%static 'https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{%static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{%static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{%static 'css/aos.css' %}">
+
+  <link rel="stylesheet" href="{%static 'css/style.css' %}">
+<style>
+.avatar {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+hr.new2 {
+  border-top: 1px dashed black;
+}
+hr {
+  border: 5px solid rgb(5, 5, 5);
+  border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="/home/" class="js-logo-clone">Pharma</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/adv/">Advertisement</a></li>
+               {%if not user.is_authenticated %}
+                <li>
+                  <a href="/signup/">Signup</a>
+                </li>
+                <li>
+                  <a href="/login/">Login</a>
+                </li>
+                {% else %}
+                <li><a href="/changepassword/">changepassword</a></li>
+                <li><a href="/logout/">Logout</a></li>
+                {% endif %}
+                <li><a href="/contact/">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+        </div>
+      </div>
+    </div>
+
+    <div class="site-blocks-cover" style="background-image: url('{%static 'images/blood_don.png' %}');">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center">
+              <h2 class="sub-title">Hospital Ronan</h2>
+              <h1>Welcome To Blood Donation Portal</h1>{%if user.is_authenticated %}</br>{{user.username}}{% endif %} <p>
+                <a href="/adv/" class="btn btn-primary px-5 py-3">want to donate?</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{%if not user.is_authenticated %}
+<center><h2>LOGIN FIRST</h2></center>
+{% else %}
+<hr>
+<center><h2>Advertises</h2></center>
+<hr>
+{% for adver in adver %}
+<center>
+<h1>blood donation Camp Name :- {{adver.campname}}</h1>
+<h3>blood donation Camp address :- {{adver.campadd}}</h3>
+<h3>blood donation Camp date :- {{adver.campdate}}</h3>
+<h3>blood donation Camp time:- {{adver.camptime}}</h3>
+<h3>blood donation Camp registration contact :- {{adver.regcontact}}</h3>
+</center>
+<hr>
+{% endfor %}
+{% endif %}
+        <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+
+            <div class="block-7">
+              <h3 class="footer-heading mb-4">About Us</h3>
+              <p>Blood Donation advertisement website</p>
+            </div>
+
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">Quick Links</h3>
+            <ul class="list-unstyled">
+              <li><a href="/home/">home</a></li>
+              <li><a href="/about/">about</a></li>
+              <li><a href="/adv/">advertise</a></li>
+              <li><a href="/contact/">contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address"><p class="mb-4 text-black">
+								<li>Sardar Patel Institute of Technology</li>
+								<li>Andheri West, Mumbai-400058</li></p></li>
+                <li class="phone">9992245709 & 9757164500</li>
+                <li class="email">nancy.kamboj@spit.ac.in</br>rohit.kambale@spit.ac.in</li>
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made by Nancy and Rohit</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{%static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{%static 'js/jquery-ui.js' %}"></script>
+  <script src="{%static 'js/popper.min.js' %}"></script>
+  <script src="{%static 'js/bootstrap.min.js' %}"></script>
+  <script src="{%static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{%static 'js/aos.js' %}"></script>
+
+  <script src="{%static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
